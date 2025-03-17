@@ -5,6 +5,7 @@ CREATE TABLE cars (
     model VARCHAR(50) NOT NULL,
     trim VARCHAR(50),
     year INT NOT NULL,
+    is_stock BOOLEAN DEFAULT TRUE,
     engine VARCHAR(100) NOT NULL,
     horsepower INT NOT NULL,
     weight INT NOT NULL,
@@ -17,9 +18,12 @@ CREATE TABLE cars (
 
 -- Create Users Table (Basic version)
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   id SERIAL PRIMARY KEY,
+   username VARCHAR(50) UNIQUE NOT NULL,
+   email VARCHAR(100) UNIQUE NOT NULL,
+   password VARCHAR(255) NOT NULL,
+   role VARCHAR(20) NOT NULL CHECK (role IN ('REGULAR_USER', 'MODERATOR', 'ADMIN')),
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- Index for fast lookup on cars
 CREATE INDEX idx_cars_make_model_year ON cars (make, model, year);
@@ -27,12 +31,14 @@ CREATE INDEX idx_cars_make_model_year ON cars (make, model, year);
 -- Create Races Table
 CREATE TABLE races (
     id SERIAL PRIMARY KEY,
+    video_url TEXT NOT NULL,
     car1_id INT NOT NULL REFERENCES cars(id) ON DELETE CASCADE,
     car2_id INT NOT NULL REFERENCES cars(id) ON DELETE CASCADE,
     status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'used')),
     selected_for_date DATE UNIQUE,
+    submitted_by INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     winner_id INT REFERENCES cars(id) ON DELETE CASCADE,
-    approved_by INT REFERENCES users(id) ON DELETE SET NULL,
+    approved_by INT NOT NULL REFERENCES users(id) ON DELETE SET NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -42,6 +48,11 @@ CREATE TABLE submissions (
     video_url TEXT NOT NULL,
     race_id INT REFERENCES races(id) ON DELETE CASCADE,
     storage_type VARCHAR(20) NOT NULL DEFAULT 'youtube' CHECK (storage_type IN ('youtube', 'vimeo', 'other')),
+    winner VARCHAR(100) NOT NULL,
+    car1_details TEXT NOT NULL,
+    car2_details TEXT NOT NULL,
+    rejection_reason TEXT,
+    rejected_by INT REFERENCES users(id) ON DELETE SET NULL,
     submitted_by INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected'))
@@ -52,7 +63,7 @@ CREATE TABLE submissions (
 CREATE TABLE race_votes (
     id SERIAL PRIMARY KEY,
     race_id INT NOT NULL REFERENCES races(id) ON DELETE CASCADE,
-    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    moderator_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
