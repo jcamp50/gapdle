@@ -1,0 +1,38 @@
+<div class="flex bg-primary h-screen justify-center px-10">
+  <div class="flex flex-col mt-2 w-2/3 ">
+    <app-navbar></app-navbar>
+    <h1 class="text-base-100 text-6xl self-center mt-10 font-bold font-rajdhani">WHO'S GAPPING WHO?</h1>
+    <h2 class="text-base-100 text-2xl self-center font-medium font-rajdhani">Guess the winner before watching the race!</h2>
+    <div class="mt-10 flex">
+      <app-car-card 
+        [carYear]="'2022'" 
+        [carModel]="'BMW M4'" 
+        [carImage]="'assets/car-images/bmw-m4.png'" 
+        [engine]="'5.2L'"
+        [power]="'610 HP'" 
+        [torque]="'560 NM'" 
+        [weight]="'1650 KG'" 
+        [drivetrain]="'RWD'"
+        [logo]="'assets/icons/bmw-logo.svg'">
+      </app-car-card>
+
+      <app-youtube-player [videoId]="'CMJWK70paNo'"></app-youtube-player>
+      <!-- Right Car Card -->
+      <app-car-card 
+        [carYear]="'2020'" 
+        [carModel]="'Porsche 911 Turbo S'"
+        [carImage]="'assets/car-images/porsche-911-turbo-s.png'" 
+        [engine]="'5.2L'" 
+        [power]="'610 HP'" 
+        [torque]="'560 NM'"
+        [weight]="'1650 KG'" 
+        [drivetrain]="'AWD'" 
+        [logo]="'assets/icons/porsche-logo.svg'">
+      </app-car-card>
+    
+    </div>
+    <button class="btn btn-base">Test</button>
+  </div>
+
+
+</div>

@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS Variables for Theme Colors */
+:root {
+  --color-primary: #F3F3F3;
+  --color-secondary: #4CAF50;
+  --color-accent: #FF5722;
+  --color-neutral: #3D4451;
+  --color-base-100: #000000;
+  --color-info: #2094F3;
+  --color-success: #009485;
+  --color-warning: #FF9900;
+  --color-error: #FF5724;
+}

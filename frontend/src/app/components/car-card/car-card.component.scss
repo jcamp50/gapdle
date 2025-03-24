@@ -1,0 +1,32 @@
+:host {
+  @apply flex flex-col items-center bg-white rounded-2xl shadow-md p-4 w-56 border;
+  border-color: #D9D8D8;
+}
+
+.car-name {
+  @apply flex flex-row gap-2 font-rajdhani text-black text-2xl mb-2;
+}
+
+.car-image {
+  @apply rounded-xl mb-4 w-40 h-16;
+}
+
+.car-details {
+  @apply flex flex-col items-center font-rajdhani mb-4;
+}
+
+.car-detail {
+  @apply text-xl flex justify-between w-40;
+}
+
+.label {
+  @apply text-black font-medium;
+}
+
+.value {
+  @apply text-[#797979] font-normal;
+}
+
+.car-logo {
+  @apply mt-4 w-32 h-32;
+}
