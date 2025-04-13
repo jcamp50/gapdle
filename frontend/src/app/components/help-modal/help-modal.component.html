@@ -1,0 +1,56 @@
+<!-- Trigger Button (Navbar Help Button) -->
+<button (click)="openModal()" class="btn bg-transparent shadow-none border-none btn-circle">
+  <img src="assets/icons/question-mark-circle.svg" alt="Help" class="w-10 h-10" />
+</button>
+
+<!-- Modal -->
+<dialog #helpModal class="modal" (click)="closeModal()">
+  <div class="modal-box relative" (click)="$event.stopPropagation()">
+    <!-- Close Button -->
+    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" (click)="closeModal()">✕</button>
+
+    <!-- Modal Content -->
+    <div class="text-center mb-4">
+      <h1 class="text-3xl font-bold font-rajdhani flex items-center gap-2">
+        HOW TO PLAY <img src="assets/gapdle-logo.svg" class="w-40 h-auto" />
+      </h1>
+    </div>
+
+    <!-- Instructions -->
+    <div class="flex flex-col gap-8 text-black font-rajdhani">
+      <div class="flex items-center gap-4">
+        <img src="assets/icons/racecar.svg" class="w-10 h-10" />
+        <div>
+          <div class="font-semibold text-xl">Check out the matchup</div>
+          Two cars are lined up for the daily race. Each car has key stats like Engine, Power, Weight, and Drivetrain to
+          help you decide.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <img src="assets/icons/checkbox.svg" class="w-8 h-8 mr-2" />
+        <div>
+          <div class="font-semibold text-xl">Make your pick</div>
+          Which car will win? Select the car you think is the fastest.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <img src="assets/icons/race-flag.svg" class="w-10 h-10" />
+        <div>
+          <div class="font-semibold text-xl">Watch the race</div>
+          After picking, the race video will unlock. <br />
+          Watch as the cars battle it out!
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <img src="assets/icons/podium.svg" class="w-10 h-10" />
+        <div>
+          <div class="font-semibold text-xl">See Results</div>
+          Did you guess correctly? Compare your pick with the actual winner and view how other players chose!
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>

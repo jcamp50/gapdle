@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,4 +18,11 @@ export class CarCardComponent {
   @Input() weight!: string;
   @Input() drivetrain!: string;
   @Input() logo!: string;
+  @Input() isSelected: boolean = false; // New Input Property
+
+  @Output() cardSelected = new EventEmitter<void>(); // Event Emitter to notify parent of selection
+
+  selectCard() {
+    this.cardSelected.emit(); // Notify parent that this card was selected
+  }
 }

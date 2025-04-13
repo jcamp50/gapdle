@@ -1,0 +1,15 @@
+.modal {
+  @apply backdrop-blur-sm bg-black/20;
+  
+}
+
+.modal-box {
+  @apply rounded-xl bg-white p-8 shadow-xl;
+}
+
+/* Fix for scrollbar-gutter: stable both-edges shifting content */
+@supports (scrollbar-gutter: stable both-edges) {
+  body.modal-open {
+    padding-right: 0 !important;
+  }
+}

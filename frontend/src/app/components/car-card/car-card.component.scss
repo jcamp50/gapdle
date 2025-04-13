@@ -1,18 +1,28 @@
-:host {
-  @apply flex flex-col items-center bg-white rounded-2xl shadow-md p-4 w-56 border;
+.car-card {
+  @apply flex flex-col items-center justify-evenly bg-white rounded-2xl shadow-md p-4 w-56 border transition-all duration-200;
   border-color: #D9D8D8;
+
+  &:hover {
+    @apply scale-105;
+    border-color: #000000;
+  }
+
+  &.selected {
+    background-color: #91DF9D;
+    border-color: #267031;
+  }
 }
 
 .car-name {
-  @apply flex flex-row gap-2 font-rajdhani text-black text-2xl mb-2;
+  @apply flex flex-row gap-2 font-rajdhani text-black text-2xl;
 }
 
 .car-image {
-  @apply rounded-xl mb-4 w-40 h-16;
+  @apply rounded-xl my-4 w-40 h-16;
 }
 
 .car-details {
-  @apply flex flex-col items-center font-rajdhani mb-4;
+  @apply flex flex-col items-center justify-evenly font-rajdhani;
 }
 
 .car-detail {
@@ -28,5 +38,9 @@
 }
 
 .car-logo {
-  @apply mt-4 w-32 h-32;
+  @apply w-32 h-32;
+}
+
+.car-logo-container {
+  @apply flex justify-center items-center;
 }

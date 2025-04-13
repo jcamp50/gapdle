@@ -1,39 +1,42 @@
-<div>
-  <!-- Car Name -->
-  <h2 class="car-name">
-    <span class="font-medium">{{ carYear }}</span>
-    <span class="font-semibold">{{ carModel }}</span>
-  </h2>
-
-  <!-- Car Image -->
-  <img [src]="carImage" alt="{{ carModel }}" class="car-image" />
-
-  <!-- Car Details -->
-  <div class="car-details">
-    <div class="car-detail">
-      <span class="label">Engine:</span>
-      <span class="value">{{ engine }}</span>
-    </div>
-    <div class="car-detail">
-      <span class="label">Power:</span>
-      <span class="value">{{ power }}</span>
-    </div>
-    <div class="car-detail">
-      <span class="label">Torque:</span>
-      <span class="value">{{ torque }}</span>
-    </div>
-    <div class="car-detail">
-      <span class="label">Weight:</span>
-      <span class="value">{{ weight }}</span>
-    </div>
-    <div class="car-detail">
-      <span class="label">Drivetrain:</span>
-      <span class="value">{{ drivetrain }}</span>
-    </div>
-  </div>
-
-  <!-- Car Logo -->
+<button (click)="selectCard()" [class.selected]="isSelected"
+  class="car-card transition transform hover:scale-105 focus:outline-none">
   <div>
-    <img [src]="logo" alt="Car Logo" class="car-logo" />
+    <!-- Car Name -->
+    <h2 class="car-name">
+      <span class="font-medium">{{ carYear }}</span>
+      <span class="font-semibold">{{ carModel }}</span>
+    </h2>
+
+    <!-- Car Image -->
+    <img [src]="carImage" alt="{{ carModel }}" class="car-image" />
+
+    <!-- Car Details -->
+    <div class="car-details">
+      <div class="car-detail">
+        <span class="label">Engine:</span>
+        <span class="value">{{ engine }}</span>
+      </div>
+      <div class="car-detail">
+        <span class="label">Power:</span>
+        <span class="value">{{ power }}</span>
+      </div>
+      <div class="car-detail">
+        <span class="label">Torque:</span>
+        <span class="value">{{ torque }}</span>
+      </div>
+      <div class="car-detail">
+        <span class="label">Weight:</span>
+        <span class="value">{{ weight }}</span>
+      </div>
+      <div class="car-detail">
+        <span class="label">Drivetrain:</span>
+        <span class="value">{{ drivetrain }}</span>
+      </div>
+    </div>
+
+    <!-- Car Logo -->
+    <div class="car-logo-container">
+      <img [src]="logo" alt="Car Logo" class="car-logo" />
+    </div>
   </div>
-</div>
+</button>
